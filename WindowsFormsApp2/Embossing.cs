@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2
 {
-    class GrayScaleFilter : Filters
+    class Embossing : MatrixFilter
     {
+        
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
 
@@ -19,6 +20,14 @@ namespace WindowsFormsApp2
                 intensity, intensity);
             return resultColor;
         }
-    };
-}
+        
+        public Embossing()
+        {
+            kernel = new float[,]
+                   {{0, 1, 0 },
+                        {1, 0, -1 },
+                        {0, -1, 0 }};
 
+        }
+    }
+}

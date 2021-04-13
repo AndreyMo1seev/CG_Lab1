@@ -10,11 +10,17 @@ namespace WindowsFormsApp2
     class MatrixFilter : Filters
     {
         protected float[,] kernel = null;
+        protected float[,] kernelx = null;
+        protected float[,] kernely = null;
         protected MatrixFilter() { }
-        public MatrixFilter(float[,] kernel)
+        public MatrixFilter(float[,] kernel, float[,] kernelx, float[,] kernely)
         {
             this.kernel = kernel;
+            this.kernel = kernelx;
+            this.kernel = kernely;
         }
+      
+
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
             int radiusX = kernel.GetLength(0) / 2;

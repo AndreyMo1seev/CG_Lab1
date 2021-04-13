@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2
 {
-    class GrayScaleFilter : Filters
+    class Brightness : Filters
     {
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
-
             Color sourceColor = sourceImage.GetPixel(x, y);
-            int intensity = Intensity(sourceImage, x, y);
-            intensity = Clamp(intensity, 0, 255);
-            Color resultColor = Color.FromArgb(intensity,
-                intensity, intensity);
+            int c = 15;
+            Color resultColor = Color.FromArgb(Clamp(c + sourceColor.R, 0, 255),
+                Clamp(c + sourceColor.G, 0, 255), Clamp(c + sourceColor.B, 0, 255));
             return resultColor;
         }
-    };
+    }
 }
-
